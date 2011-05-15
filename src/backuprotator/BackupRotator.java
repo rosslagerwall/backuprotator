@@ -5,7 +5,17 @@ import java.io.*;
 public class BackupRotator {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Settings set = new Settings(args.length > 0 ? args[0] : "settings.conf");
+		if (args.length > 0 && (args[0].equals("-h") ||
+				args[0].equals("--help")) || args.length > 1) {
+			System.err.println("BackupRotator [-h] [--help] [configfile]\n\n" +
+				"*configfile* specifies the path to the configuration file" +
+				" and defaults to \"settings.conf\".\n"+
+				"*-h* or *--help* displays this message.");
+			System.exit(64);
+		}
+
+		Settings set = new Settings(args.length > 0 ?
+								args[0] : "settings.conf");
 
 		for (int filenameIterator = 0; filenameIterator < set
 				.getTotalFilenames(); filenameIterator++) {
