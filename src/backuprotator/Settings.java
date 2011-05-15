@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Settings {
 	
 	private String backupPath = "";
-	private ArrayList filenames = new ArrayList();
+	private ArrayList<String> filenames = new ArrayList<String>();
 	private int maxNo = 0;
 	
 	public Settings() throws FileNotFoundException {
@@ -31,7 +31,7 @@ public class Settings {
 	}
 
 	public String getFilename(int i) {
-		return (String)filenames.get(i);
+		return filenames.get(i);
 	}
 	
 	public int getTotalFilenames() {
