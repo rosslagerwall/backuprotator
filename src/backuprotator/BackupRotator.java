@@ -5,7 +5,7 @@ import java.io.*;
 public class BackupRotator {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Settings set = new Settings();
+		Settings set = new Settings(args.length > 0 ? args[0] : "settings.conf");
 
 		for (int filenameIterator = 0; filenameIterator < set
 				.getTotalFilenames(); filenameIterator++) {

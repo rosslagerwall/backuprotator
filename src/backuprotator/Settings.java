@@ -23,8 +23,8 @@ public class Settings {
 	private ArrayList<String> filenames = new ArrayList<String>();
 	private int maxNo = 0;
 	
-	public Settings() throws FileNotFoundException {
-		Scanner settingsFile = new Scanner(new File("settings.conf"));
+	public Settings(String name) throws FileNotFoundException {
+		Scanner settingsFile = new Scanner(new File(name));
 		while (settingsFile.hasNextLine()) {
 			String temp = settingsFile.nextLine();
 			if (temp.startsWith("backupPath")) {
