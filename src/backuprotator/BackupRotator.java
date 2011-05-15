@@ -2,6 +2,23 @@ package backuprotator;
 
 import java.io.*;
 
+/**
+* BackupRotator is a program that allows files to be "rotated" with an upper
+* limit on the number of files that exist.
+* Basically, it is given a filename(s) and a number n in a configuration file
+* and it renames the filename(s) such that there it forms an increasing
+* list filename1, filename2, up to the smaller of n or as many as are
+* available. If there are more than n files when the program is run, the
+* oldest files get deleted.
+* Eg: If there are files called log1, log2, log3 and maxNo=3, running the
+* program will delete log3, rename log2 to log3 and rename log1 to log2.
+* Eg: If there are files called log1, log2, log3 and maxNo=0, running the
+* program will rename log2 to log3 and rename log1 to log2.
+* Eg: If there is a file called log1 and maxNo=3, running the program will
+* delete log3, rename log1 to log2.
+* Eg: If there are files called log1, log2 and maxNo=3, running the
+* program will rename log2 to log3 and rename log1 to log2.
+**/
 public class BackupRotator {
 
 	public static void main(String[] args) throws FileNotFoundException {
