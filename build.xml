@@ -1,0 +1,21 @@
+<project name="BackupRotator" default="compile">
+
+	<target name="clean">
+		<delete dir="bin" />
+		<delete file="BackupRotator.jar" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+		<javac srcdir="src" destdir="bin" includeantruntime="false" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="BackupRotator.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="backuprotator/BackupRotator" />
+			</manifest>
+		</jar>
+	</target>
+
+</project>
