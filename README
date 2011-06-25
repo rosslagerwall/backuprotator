@@ -1,0 +1,55 @@
+BackupRotator
+=============
+
+BackupRotator is a program that allows files to be "rotated" with an upper
+limit on the number of files that exist.
+Basically, it is given a filename(s) and a number n in a configuration file
+and it renames the filename(s) such that there it forms an increasing
+list filename1, filename2, up to the smaller of n or as many as are
+available. If there are more than n files when the program is run, the
+oldest files get deleted.
+Eg: If there are files called log1, log2, log3 and maxNo=3, running the
+program will delete log3, rename log2 to log3 and rename log1 to log2.
+Eg: If there are files called log1, log2, log3 and maxNo=0, running the
+program will rename log2 to log3 and rename log1 to log2.
+Eg: If there is a file called log1 and maxNo=3, running the program will
+delete log3, rename log1 to log2.
+Eg: If there are files called log1, log2 and maxNo=3, running the
+program will rename log2 to log3 and rename log1 to log2.
+
+The config file format is as follows:
+  A line starting with "backupPath=" defines the path to the directory
+  containing the files to be rotated.
+  A line starting with "maxNo=" defines the maximum number of files that
+  may exist at any one time.
+  A line starting with "filename=" defines the generic name of the file to be
+  rotated relative to backupPath. A # indicates the position where the file
+  will be numbered. Eg: filename=myfile# will result files being called
+  myfile1, myfile2, etc. There may be more than one "filename=" line. The
+  rotation will be applied to all filenames.
+
+To build:
+  ant
+
+To build a jar file:
+  ant jar
+
+Usage:
+  java -jar BackupRotator.jar [-h] [--help] [configfile]
+
+License:
+
+    Copyright (C) 2011 Ross Lagerwall <rosslagerwall@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.

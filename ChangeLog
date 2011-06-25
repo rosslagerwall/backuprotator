@@ -1,0 +1,57 @@
+changeset:   6:a929035daa8d
+tag:         tip
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Mon May 30 09:04:33 2011 +0200
+files:       build.xml
+description:
+Migrate to ant build system.
+
+
+changeset:   5:6bd6fb53c626
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Sun May 15 18:31:41 2011 +0200
+files:       src/backuprotator/BackupRotator.java
+description:
+Document program.
+
+
+changeset:   4:5815d112fd54
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Sun May 15 16:05:54 2011 +0200
+files:       src/backuprotator/BackupRotator.java
+description:
+Display a help message if the cmdline arguments are incorrect.
+
+
+changeset:   3:0e7de04c5348
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Sun May 15 15:57:47 2011 +0200
+files:       src/backuprotator/BackupRotator.java src/backuprotator/Settings.java
+description:
+Don't hardcode config file path, accept it as cmdline argument.
+
+
+changeset:   2:72487dabf2f1
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Sun May 15 15:55:10 2011 +0200
+files:       src/backuprotator/Settings.java
+description:
+Document the configuration file format.
+
+
+changeset:   1:aea060f72c1a
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Sun May 15 14:45:43 2011 +0200
+files:       src/backuprotator/Settings.java
+description:
+Use generic instead of unsafe ArrayList.
+
+
+changeset:   0:4751f7358012
+user:        Ross Lagerwall <rosslagerwall@gmail.com>
+date:        Tue May 03 20:59:07 2011 +0200
+files:       .hgignore settings.conf src/backuprotator/BackupRotator.java src/backuprotator/Settings.java
+description:
+Initial commit.
+
+
