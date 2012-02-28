@@ -20,6 +20,7 @@ package backuprotator;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
 /**
 * Loads the configuration settings for the backup rotation.
@@ -34,7 +35,7 @@ import java.util.Scanner;
 *   myfile1, myfile2, etc. There may be more than one "filename=" line. The
 *   rotation will be applied to all filenames.
 **/
-public class Settings {
+public class Settings implements Iterable<String> {
 	
 	private String backupPath = "";
 	private ArrayList<String> filenames = new ArrayList<String>();
@@ -70,5 +71,9 @@ public class Settings {
 
 	public int getMaxNo() {
 		return maxNo;
+	}
+
+	public Iterator<String> iterator() {
+		return filenames.iterator();
 	}
 }

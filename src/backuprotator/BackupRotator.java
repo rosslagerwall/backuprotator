@@ -18,6 +18,7 @@
 package backuprotator;
 
 import java.io.*;
+import java.util.Iterator;
 
 /**
 * BackupRotator is a program that allows files to be "rotated" with an upper
@@ -51,19 +52,20 @@ public class BackupRotator {
 		Settings set = new Settings(args.length > 0 ?
 								args[0] : "settings.conf");
 
-		for (int filenameIterator = 0; filenameIterator < set
-				.getTotalFilenames(); filenameIterator++) {
+		Iterator<String> filenameIterator = set.iterator();
+		while (filenameIterator.hasNext()) {
+			String current = filenameIterator.next();
 			File oldest = new File(set.getBackupPath() + "/"
-					+ set.getFilename(filenameIterator).replace("#", "" + set.getMaxNo()));
+					+ current.replace("#", "" + set.getMaxNo()));
 			if (oldest.exists() && set.getMaxNo() != 0) {
 				oldest.delete();
 			}
 			if (set.getMaxNo() != 0) {
 				for (int i = set.getMaxNo(); i >= 1; i--) {
 					String oldname = set.getBackupPath() + "/"
-							+ set.getFilename(filenameIterator).replace("#", "" + i);
+							+ current.replace("#", "" + i);
 					String newname = set.getBackupPath() + "/"
-							+ set.getFilename(filenameIterator).replace("#", "" + (i + 1));
+							+ current.replace("#", "" + (i + 1));
 					File currentFile = new File(oldname);
 					if (currentFile.exists()) {
 						currentFile.renameTo(new File(newname));
@@ -72,12 +74,12 @@ public class BackupRotator {
 			} else {
 				int total = 1;
 				while (new File(set.getBackupPath() + "/"
-						+ set.getFilename(filenameIterator).replace("#", "" + total)).exists()) {
+						+ current.replace("#", "" + total)).exists()) {
 					String oldname = set.getBackupPath() + "/"
-							+ set.getFilename(filenameIterator).replace("#", "" + total);
+							+ current.replace("#", "" + total);
 					String newname = set.getBackupPath()
 							+ "/"
-							+ set.getFilename(filenameIterator).replace("#",
+							+ current.replace("#",
 									"temp" + (total + 1));
 					File currentFile = new File(oldname);
 					currentFile.renameTo(new File(newname));
@@ -86,9 +88,9 @@ public class BackupRotator {
 
 				for (int i = 2; i <= total; i++) {
 					String oldname = set.getBackupPath() + "/"
-							+ set.getFilename(filenameIterator).replace("#", "temp" + i);
+							+ current.replace("#", "temp" + i);
 					String newname = set.getBackupPath() + "/"
-							+ set.getFilename(filenameIterator).replace("#", "" + i);
+							+ current.replace("#", "" + i);
 					File currentFile = new File(oldname);
 					currentFile.renameTo(new File(newname));
 				}
